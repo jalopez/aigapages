@@ -1,0 +1,30 @@
+{% load filters %}
+<ul> 
+{% for year in years %}
+<li> 
+    <span class="title">{{ year.year }}</span>
+    <ul>
+    {% for pub in year.publications %}
+    <li class="publication">
+      <span class="authors">
+	{% for author in pub.author_list %}
+	    {% if not forloop.last %}
+	    <a href="#">{{ author.cleanname|encode }}</a>,
+	    {% else %}
+	    and <a href="#">{{ author.cleanname|encode }}</a>.
+	    {% endif %}
+        {% endfor %}
+      </span>
+      <span class="paperTitle">{{ pub.cleantitle }}</span>.
+      <span class="editorial"></span>
+      <span class="publiTitle">{{ pub.cleanjournal  }}</span> 
+      <span class="conference">{{ pub.booktitle }}</span>, 
+      <span class="date">{% if pub.month %}{{ pub.cleanmonth }}, {% endif %}{{ pub.year }}</span> 
+      <span class="links">[<a href="#">APA</a>]</span>
+      <span class="links">[<a href="#">Full Text</a>]</span>
+    </li>
+    {% endfor %}
+    </ul>
+</li>
+{% endfor %}
+</ul> 
