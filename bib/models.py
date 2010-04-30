@@ -59,7 +59,6 @@ class Publication(models.Model):
     derived_edit_access_level = models.CharField(max_length=21)
     cleanauthor = models.TextField(blank=True)
     pages = models.CharField(max_length=765)
-    #authors = models.ManyToManyField(Author, through='Publicationauthorlink')
     class Meta:
         db_table = u'publication'
 
