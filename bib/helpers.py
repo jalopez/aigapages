@@ -1,4 +1,5 @@
 from django.shortcuts import render_to_response
+from aigapages.authors import author_list
 import re
 
 def group_by_year(publications):
@@ -24,11 +25,12 @@ def listing_response(publications, params):
     if (order_by == 'type'): 
         types = group_by_type(publications)
         return render_to_response('publications.html',
-            {'list_template': 'by_type.html', 'types':  types})
+            {'list_template': 'by_type.html', 'types':  types, 'authors': author_list})
     elif (order_by == 'year'):
         years = group_by_year(publications)
         return render_to_response('publications.html', 
-            { 'list_template': 'by_year.html', 'type': {'years': years }}) 
+            { 'list_template': 'by_year.html', 'type': {'years': years }, 
+		'authors': author_list}) 
     else: 
         raise Http404
 

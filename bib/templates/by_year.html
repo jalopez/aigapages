@@ -1,5 +1,5 @@
 {% load filters %}
-<ul> 
+<ul>
 {% for year in type.years %}
 <li> 
     <span class="title">{{ year.year }}</span>
@@ -8,11 +8,11 @@
     <li class="publication">
       <span class="authors">
 	{% for author in pub.author_list %}
-	    {% if not forloop.last %}
-	    <a href="#">{{ author.cleanname|encode }}</a>,
-	    {% else %}
-	    and <a href="#">{{ author.cleanname|encode }}</a>.
-	    {% endif %}
+	        {% if not forloop.last %}
+	        {{ author|author_cite:authors }},
+	        {% else %}
+	        and {{ author|author_cite:authors }}
+	        {% endif %}
         {% endfor %}
       </span>
       <span class="paperTitle">{{ pub.cleantitle }}</span>.
