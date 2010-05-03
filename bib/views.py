@@ -1,6 +1,9 @@
+from django.conf import settings
+from django.core.servers.basehttp import FileWrapper
 from django.http import HttpResponse, HttpResponseServerError, Http404, HttpResponseBadRequest
-from django.shortcuts import get_list_or_404, get_object_or_404, render_to_response
+from django.shortcuts import get_list_or_404, get_object_or_404, render_to_response, redirect
 from aigapages.bib.models import Author, Publication
+from os import path
 
 def group_by_year(publications):
     years = publications.values('year').distinct().order_by('-year')
@@ -15,7 +18,13 @@ def group_by_type(publications):
         t['years'] = group_by_year(all_pubs)
     return types
 
-def process_response(publications, order_by):
+def listing_response(publications, params):
+    order_by = params.get('order_by', 'year')
+    project = params.get('project', '')
+
+    if project:
+        publications = publications.filter(userfields__icontains='project={%s}' % project)
+
     if (order_by == 'type'): 
         types = group_by_type(publications)
         return render_to_response('publications.html',
@@ -30,20 +39,29 @@ def process_response(publications, order_by):
 
 def view_all(request):
     publications = Publication.objects.filter(author__institute='Facultad de Informatica')
-
-    order_by = request.GET.get('order_by', 'year')
-
-    return process_response(publications, order_by)
+    return listing_response(publications, request.GET)
 
 def view_author(request, author_id):
     author = get_object_or_404(Author, author_id=author_id, 
         institute='Facultad de Informatica')
-
-    order_by = request.GET.get('order_by', 'year')
-
-    return process_response(author.publications, order_by)
+    return listing_response(author.publications, request.GET)
 
 
+def download_fulltext(request, pub_id):
+    publication = get_object_or_404(Publication, pub_id = pub_id)
+    attachment  = get_object_or_404(publication.attachments_set.all(), ismain=True)
     #import ipdb; ipdb.set_trace()
+    if attachment.isremote: 
+        return redirect(attachment.location)
+    else:
+        filename = path.join(settings.ATTACHMENT_DIR, attachment.location)
+        response = HttpResponse(FileWrapper(file(filename)), content_type=attachment.mime)
+        response['Content-Disposition'] = ('attachment; filename=%s' % attachment.name)
+        return response
+    
+def view_bibtex(request, pub_id):
+    raise Http404
+
+
 
 # vim:set ts=4 sw=4 et:

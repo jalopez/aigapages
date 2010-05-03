@@ -65,6 +65,9 @@ class Publication(models.Model):
     def author_list(self):
         return self.author_set.order_by('publicationauthorlink__rank')
 
+    def fulltext_attachment(self):
+        return self.attachments_set.get(ismain=True)
+
 
 class Author(models.Model):
     author_id = models.IntegerField(primary_key=True)
@@ -90,26 +93,28 @@ class Publicationauthorlink(models.Model):
         db_table = u'publicationauthorlink'
 
 
+class Attachments(models.Model):
+    att_id = models.IntegerField(primary_key=True)
+    pub = models.ForeignKey(Publication)
+    location = models.CharField(max_length=765)
+    note = models.CharField(max_length=765)
+    ismain = models.CharField(max_length=15)
+    user_id = models.IntegerField()
+    mime = models.CharField(max_length=300)
+    name = models.CharField(max_length=765)
+    isremote = models.CharField(max_length=15)
+    read_access_level = models.CharField(max_length=21)
+    edit_access_level = models.CharField(max_length=21)
+    group_id = models.IntegerField()
+    derived_read_access_level = models.CharField(max_length=21)
+    derived_edit_access_level = models.CharField(max_length=21)
+    class Meta:
+        db_table = u'attachments'
+
+
 # THIS IS SPARTAAAAA
 #
 #
-#class Attachments(models.Model):
-#    pub_id = models.IntegerField()
-#    location = models.CharField(max_length=765)
-#    note = models.CharField(max_length=765)
-#    ismain = models.CharField(max_length=15)
-#    user_id = models.IntegerField()
-#    mime = models.CharField(max_length=300)
-#    name = models.CharField(max_length=765)
-#    isremote = models.CharField(max_length=15)
-#    att_id = models.IntegerField(primary_key=True)
-#    read_access_level = models.CharField(max_length=21)
-#    edit_access_level = models.CharField(max_length=21)
-#    group_id = models.IntegerField()
-#    derived_read_access_level = models.CharField(max_length=21)
-#    derived_edit_access_level = models.CharField(max_length=21)
-#    class Meta:
-#        db_table = u'attachments'
 #
 #
 #class Availablerights(models.Model):

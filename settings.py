@@ -9,7 +9,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-
+#ATTACHMENT_DIR = '/var/www/web/bib/attachments'
+ATTACHMENT_DIR = '/home/jlopez/Documentos/workspace/attachments'
 
 TEMPLATE_DIRS = (
     '/home/jlopez/Documentos/workspace/aigapages/bib/templates/',
