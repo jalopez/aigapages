@@ -8,7 +8,7 @@
 # into your database.
 
 from django.db import models
-
+from aigapages.authors import author_list
 
 
 
@@ -89,6 +89,12 @@ class Author(models.Model):
     publications = models.ManyToManyField(Publication, through='Publicationauthorlink')
     class Meta:
         db_table = u'author'
+    def homepage(self):
+        if author_list.has_key(self.author_id):
+            return author_list[self.author_id]
+        else:
+            return None
+    
 
 class Publicationauthorlink(models.Model):
     pub = models.ForeignKey(Publication)
