@@ -10,3 +10,5 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # (r'^admin/', include(admin.site.urls)),
 )
+
+# vim:set ts=4 sw=4 et:

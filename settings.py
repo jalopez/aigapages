@@ -35,6 +35,8 @@ TIME_ZONE = 'Europe/Spain'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en'
 
+LANGUAGES = (('es', 'Spanish'), ('en', 'English'))
+
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
@@ -66,6 +68,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'aigapages.middleware.LanguageParamMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     #'django.contrib.auth.middleware.AuthenticationMiddleware',
