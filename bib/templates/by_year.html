@@ -1,4 +1,5 @@
 {% load filters %}
+{% load i18n %}
 <ul>
 {% for year in type.years %}
 <li> 
@@ -13,7 +14,7 @@
 			   <a href="{{ author.homepage }}">{{ author.cleanname|encode }}</a>{% comment %}
 			{% endcomment %}{% else %}{{ author.cleanname|encode }}{% endif %},
 	        {% else %}
-	        and 
+	        {% trans "and" %} 
 		 	{% if author.homepage %}
 			   <a href="{{ author.homepage }}">{{ author.cleanname|encode }}</a>{% comment %}
 			{% endcomment %}{% else %}{{ author.cleanname|encode }}{% endif %}.
@@ -24,15 +25,15 @@
       <span class="editorial"></span>
       <span class="publiTitle">{{ pub.cleanjournal  }}</span> 
       <span class="conference">{{ pub.booktitle }}</span>, 
-      <span class="date">{% if pub.month %}{{ pub.cleanmonth }}, {% endif %}{{ pub.year }}</span> 
+      <span class="date">{% if pub.month %}{% trans pub.cleanmonth %}, {% endif %}{{ pub.year }}</span> 
       {% url aigapages.bib.views.view_bibtex pub.pub_id as bibtex_url %}
       <span class="links">[<a href="javascript:open_url('{{ bibtex_url }}')">Bibtex</a>]</span>
       {% if pub.abstract %}
-         <span class="links">[<a href="javascript:toggle_abstract('{{ pub.pub_id }}')">Abstract</a>]</span>
+         <span class="links">[<a href="javascript:toggle_abstract('{{ pub.pub_id }}')">{% trans "Abstract" %}</a>]</span>
       {% endif %}
       {% if pub.fulltext_attachment %}
 	 {% url aigapages.bib.views.download_fulltext pub.pub_id as fulltext_url %}
-         <span class="links">[<a href="{{ fulltext_url }}">Full Text</a>]</span>
+         <span class="links">[<a href="{{ fulltext_url }}">{% trans "Full Text" %}</a>]</span>
       {% endif %}
 
       <div id="abstract_{{ pub.pub_id }}" class="abstract" style="display:none">
