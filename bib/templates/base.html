@@ -45,6 +45,19 @@
 	    text-decoration:none;
 	}
 </style> 
+<script type="text/javascript">
+	// <!--
+	function toggle_abstract(pub_id) {
+		var abstract_id = "abstract_" + pub_id;
+		var abstract_node = document.getElementById(abstract_id);
+		if (abstract_node.style.display == 'none') {
+			abstract_node.style.display = 'block';
+		} else {
+			abstract_node.style.display = 'none';
+		}
+	}
+	// -->
+</script>
 </head> 
 <body> 
  {% block content %}

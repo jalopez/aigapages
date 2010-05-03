@@ -6,7 +6,10 @@ register = template.Library()
 @register.filter
 @stringfilter
 def encode(value):     
-    return unicode(value).encode('latin1').decode('utf8')
+    try:
+        return unicode(value).encode('latin1').decode('utf8')
+    except:
+        return value
 encode.is_safe=True
 
 

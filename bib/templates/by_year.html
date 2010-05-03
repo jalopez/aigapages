@@ -22,11 +22,18 @@
       <span class="date">{% if pub.month %}{{ pub.cleanmonth }}, {% endif %}{{ pub.year }}</span> 
       {% url aigapages.bib.views.view_bibtex pub.pub_id as bibtex_url %}
       <span class="links">[<a href="{{ bibtex_url }}">Bibtex</a>]</span>
+      {% if pub.abstract %}
+         <span class="links">[<a href="javascript: toggle_abstract('{{ pub.pub_id }}')">Abstract</a>]</span>
+      {% endif %}
       {% if pub.fulltext_attachment %}
 	 {% url aigapages.bib.views.download_fulltext pub.pub_id as fulltext_url %}
          <span class="links">[<a href="{{ fulltext_url }}">Full Text</a>]</span>
       {% endif %}
-    </li>
+
+      <div id="abstract_{{ pub.pub_id }}" class="abstract" style="display:none">
+	  {{ pub.abstract|encode }}
+      </div> <!-- abstract -->
+    </li> <!-- publication -->
     {% endfor %}
     </ul>
 </li>

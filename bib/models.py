@@ -63,10 +63,16 @@ class Publication(models.Model):
         db_table = u'publication'
 
     def author_list(self):
-        return self.author_set.order_by('publicationauthorlink__rank')
+        return self.author_set.filter(publicationauthorlink__is_editor = 'N').order_by('publicationauthorlink__rank')
 
+    def editor_list(self):
+        return self.author_set.filter(publicationauthorlink__is_editor = 'Y').order_by('publicationauthorlink__rank')
+    
     def fulltext_attachment(self):
         return self.attachments_set.get(ismain=True)
+    
+    def cleanmonth(self):
+        return self.month[1:-1]
 
 
 class Author(models.Model):
