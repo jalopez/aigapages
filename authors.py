@@ -1,3 +1,6 @@
+# List of available authors
 author_list = {
-	448: 'http://conwet.fi.upm.es/index.php/people/javier-lopez', # Javier Lopez
+	#Aigaion id: author homepage
+	448: 'http://someurl.com', # Javier Lopez
+	856: 'http://anotherurl.com', # Sebastian Ortega
 }
