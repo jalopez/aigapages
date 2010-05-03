@@ -12,6 +12,7 @@ def view_all(request):
     query = Q()
     for author_id in author_list:
         query = query | Q(author__pk = author_id)
+    
     publications = Publication.objects.filter(query) 
     return listing_response(publications, request.GET)
 
@@ -54,6 +55,7 @@ def view_bibtex(request, pub_id):
         ('isbn', pub.isbn),
         ('note', pub.note),  
     ]
+    #import ipdb; ipdb.set_trace()
 
     if pub.chapter and pub.chapter <> '0':
         fields += [('chapter', pub.chapter)]
@@ -65,8 +67,6 @@ def view_bibtex(request, pub_id):
         'key': pub.bibtex_id,
         'fields': filter(lambda field: field[1], fields)
     }
-    return render_to_response('publication.bib', context, mimetype='text/plain') 
-
-
+    return render_to_response('publication.bib', context, mimetype='text/plain; charset=utf-8') 
 
 # vim:set ts=4 sw=4 et:

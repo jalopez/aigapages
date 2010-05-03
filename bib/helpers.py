@@ -45,3 +45,5 @@ def parse_userfields(userfields):
     for match in re.finditer(r'(?P<key>\w+)\s*=\s*{(?P<value>[^}]*)},', userfields):
         parsed_userfields += [(match.group('key'), match.group('value'))]
     return parsed_userfields
+
+# vim:set ts=4 sw=4 et:
