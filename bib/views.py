@@ -1,21 +1,26 @@
 from django.conf import settings
+from django.db.models import Q
 from django.core.servers.basehttp import FileWrapper
 from django.http import HttpResponse, HttpResponseServerError, Http404, HttpResponseBadRequest
 from django.shortcuts import get_list_or_404, get_object_or_404, render_to_response, redirect
 from aigapages.bib.models import Author, Publication
-from os import path
 from aigapages.bib.helpers import *
-
+from aigapages.authors import author_list
+from os import path
 
 def view_all(request):
-    publications = Publication.objects.filter(author__institute='Facultad de Informatica')
+    query = Q()
+    for author_id in author_list:
+        query = query | Q(author__pk = author_id)
+    publications = Publication.objects.filter(query) 
     return listing_response(publications, request.GET)
 
 def view_author(request, author_id):
-    author = get_object_or_404(Author, author_id=author_id, 
-        institute='Facultad de Informatica')
-    return listing_response(author.publications, request.GET)
-
+    if int(author_id) in author_list:
+        author = get_object_or_404(Author, author_id=author_id)
+        return listing_response(author.publications, request.GET)
+    else: 
+        raise Http404
 
 def download_fulltext(request, pub_id):
     publication = get_object_or_404(Publication, pub_id = pub_id)
