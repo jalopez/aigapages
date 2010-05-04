@@ -11,12 +11,12 @@
 	{% for author in pub.author_list %}
 	        {% if not forloop.last %}
 			{% if author.homepage %}
-			   <a href="{{ author.homepage }}">{{ author.cleanname|encode }}</a>{% comment %}
+			   <a href="{{ author.homepage }}" target="_parent">{{ author.cleanname|encode }}</a>{% comment %}
 			{% endcomment %}{% else %}{{ author.cleanname|encode }}{% endif %},
 	        {% else %}
 	        {% trans "and" %} 
 		 	{% if author.homepage %}
-			   <a href="{{ author.homepage }}">{{ author.cleanname|encode }}</a>{% comment %}
+			   <a href="{{ author.homepage }}" target="_parent">{{ author.cleanname|encode }}</a>{% comment %}
 			{% endcomment %}{% else %}{{ author.cleanname|encode }}{% endif %}
 			({% trans "in alph. order" %}).
 	        {% endif %}
