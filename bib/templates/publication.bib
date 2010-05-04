@@ -1,6 +1,4 @@
-{% load filters %}
-@{{ type|upper }}{ {{ key }}, {% for field in fields %}
-	{{ field.0 }}={ {{ field.1|encode }} }{% if not forloop.last %},{% endif %}{% endfor %}
+{% load filters %}{% autoescape off %}@{{ type|upper }}{ {{ key }}, {% for field in fields %}
+	{{ field.0 }}={ {{ field.1|encode|latexescape }} }{% if not forloop.last %},{% endif %}{% endfor %}
 }
-	
-
+{% endautoescape %}
