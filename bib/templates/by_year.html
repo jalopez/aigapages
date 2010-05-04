@@ -17,7 +17,8 @@
 	        {% trans "and" %} 
 		 	{% if author.homepage %}
 			   <a href="{{ author.homepage }}">{{ author.cleanname|encode }}</a>{% comment %}
-			{% endcomment %}{% else %}{{ author.cleanname|encode }}{% endif %}.
+			{% endcomment %}{% else %}{{ author.cleanname|encode }}{% endif %}
+			({% trans "in alph. order" %}).
 	        {% endif %}
         {% endfor %}
       </span>

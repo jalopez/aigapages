@@ -11,6 +11,9 @@ msgstr "Resumen"
 msgid "Full Text"
 msgstr "Texto completo"
 
+msgid "in alph. order"
+msgstr "en orden alfabético"
+
 msgid "jan"
 msgstr "Enero"
 
