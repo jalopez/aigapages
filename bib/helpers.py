@@ -15,7 +15,7 @@ def group_by_type(publications):
         t['years'] = group_by_year(all_pubs)
     return types
 
-def listing_response(publications, params):
+def listing_response(publications, params, context):
     order_by = params.get('order_by', 'year')
     project = params.get('project', '')
 
@@ -24,13 +24,15 @@ def listing_response(publications, params):
 
     if (order_by == 'type'): 
         types = group_by_type(publications)
-        return render_to_response('publications.html',
-            {'list_template': 'by_type.html', 'types':  types, 'authors': author_list})
+        context.update({'list_template': 'by_type.html', 'types':  types, 
+                'authors': author_list})
+        return render_to_response('publications.html', context)
+            
     elif (order_by == 'year'):
         years = group_by_year(publications)
-        return render_to_response('publications.html', 
-            { 'list_template': 'by_year.html', 'type': {'years': years }, 
-		'authors': author_list}) 
+        context.update({ 'list_template': 'by_year.html', 'type': {'years': years }, 
+                'authors': author_list}) 
+        return render_to_response('publications.html', context)
     else: 
         raise Http404
 

@@ -7,6 +7,9 @@ msgstr "y"
 msgid "Abstract"
 msgstr "Resumen"
 
+msgid "Scientific Production"
+msgstr "Producción Científica"
+
 #: templates/by_year.html:36
 msgid "Full Text"
 msgstr "Texto completo"
