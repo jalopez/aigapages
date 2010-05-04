@@ -9,10 +9,21 @@ def group_by_year(publications):
     return years
 
 def group_by_type(publications):
-    types = publications.values('pub_type').distinct().order_by('pub_type')
-    for t in types:
-        all_pubs = publications.filter(pub_type=t['pub_type'])
-        t['years'] = group_by_year(all_pubs)
+    all_types = map(lambda t: t['pub_type'],
+         publications.values('pub_type').distinct().order_by('pub_type'))
+
+    types = []
+    for type in ('Article', 'Inproceedings', 'Book', 'Proceedings', 'Inbook',
+        'Incollection', 'Phdthesis', 'Mastersthesis', 'Booklet', 'Manual',
+        'Techreport', 'Misc', 'Unpublished'):
+
+        if type in all_types: 
+            all_pubs = publications.filter(pub_type=type)
+            types += [{
+                'years': group_by_year(all_pubs),
+                'pub_type': type,
+            }]
+
     return types
 
 def listing_response(publications, params, context):
