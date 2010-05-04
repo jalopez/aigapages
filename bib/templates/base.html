@@ -1,13 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+{% load compress %}
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>{{ title }}</title>
+{% compress css %}
 <style type="text/css"> 
+	@azul: #1E6298;
+	
 	li {
             list-style-type:none;
-	    color:#1E6298;
+	    color: @azul;
             font-family: "Arial Narrow",Helvetica,Arial,sans-serif;
             font-size:20pt;
       	}
@@ -28,7 +32,7 @@
 	}
 	.authors a {
             text-decoration:none;
-            color:#1E6298;        
+            color: @azul;        
         }
         .authors a:hover, .conference a:hover, .links a:hover {
             text-decoration:underline;
@@ -53,7 +57,8 @@
 	    background-color: #eee;
 	    border: 1px dashed #aaa;
 	}
-</style> 
+</style>
+{% endcompress %}
 <script type="text/javascript">
 	// <!--
 	function toggle_abstract(pub_id) {

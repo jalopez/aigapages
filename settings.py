@@ -71,12 +71,12 @@ MIDDLEWARE_CLASSES = (
     'aigapages.middleware.LanguageParamMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.cache.CacheMiddleware',
     #'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
 ROOT_URLCONF = 'aigapages.urls'
 
-CACHE_BACKEND = 'dummy://'
 
 INSTALLED_APPS = (
     #'django.contrib.auth',
@@ -86,5 +86,14 @@ INSTALLED_APPS = (
     'aigapages.bib',
     'compressor',
 )
+
+COMPILER_FORMATS = {
+    '.css': {
+        'binary_path': 'lessc',
+        'arguments': '*.css'
+    },
+}
+
+COMPRESS = True
 
 # vim:set ts=4 sw=4 et:
