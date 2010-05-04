@@ -42,7 +42,7 @@ def download_fulltext(request, pub_id):
         return redirect(attachment.location)
     else:
         filename = path.join(settings.ATTACHMENT_DIR, attachment.location)
-        response = HttpResponse(FileWrapper(file(filename)), content_type=attachment.mime)
+        response = HttpResponse(FileWrapper(file(filename)), content_type=str(attachment.mime))
         response['Content-Disposition'] = ('attachment; filename=%s' % attachment.name)
         return response
 
