@@ -53,25 +53,25 @@ msgstr "Diciembre"
 #: Publication types
 
 msgid "Article"
-msgstr "Artículo"
+msgstr "Artículos en Revista"
 
 msgid "Book"
-msgstr "Libro"
+msgstr "Libros"
 
 msgid "Booklet"
-msgstr "Booklet"
+msgstr "Booklets"
 
 msgid "Inbook"
-msgstr "Capítulo de libro"
+msgstr "Capítulo de Libro"
 
 msgid "Incollection"
-msgstr "En colección"
+msgstr "En Colecciones"
 
 msgid "Inproceedings"
-msgstr "Artículo de conferencia"
+msgstr "Artículos de Conferencia"
 
-msgid "Manual"
-msgstr "Manual"
+msgid "Manuales"
+msgstr "Manuales"
 
 msgid "Mastersthesis"
 msgstr "Tesis de Máster"
@@ -80,13 +80,13 @@ msgid "Misc"
 msgstr "Otros"
 
 msgid "Phdthesis"
-msgstr "Tesis Doctoral"
+msgstr "Tesis Doctorales"
 
 msgid "Proceedings"
-msgstr "Libro de conferencia"
+msgstr "Libros de conferencia"
 
 msgid "Techreport"
-msgstr "Informe técnico"
+msgstr "Informes técnicos"
 
 msgid "Unpublished"
 msgstr "No publicado"

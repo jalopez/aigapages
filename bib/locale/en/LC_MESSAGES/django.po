@@ -52,14 +52,26 @@ msgstr "December"
 
 #:Publication types
 
+msgid "Article"
+msgstr "Journal Articles"
+
+msgid "Book"
+msgstr "Books"
+
+msgid "Booklet"
+msgstr "Booklets"
+
 msgid "Inbook"
-msgstr "Book Chapter"
+msgstr "Book Chapters"
 
 msgid "Incollection"
-msgstr "In Collection"
+msgstr "In Collections"
 
 msgid "Inproceedings"
-msgstr "In Proceedings"
+msgstr "Conference Proceedings"
+
+msgid "Manuals"
+msgstr "Manuals"
 
 msgid "Mastersthesis"
 msgstr "Master Thesis"
@@ -70,6 +82,12 @@ msgstr "Miscelanea"
 msgid "Phdthesis"
 msgstr "Ph.D. Thesis"
 
+msgid "Proceedings"
+msgstr "Proceedings"
+
 msgid "Techreport"
-msgstr "Technical Report"
+msgstr "Technical Reports"
+
+msgid "Unpublished"
+msgstr "Unpublished"
 
