@@ -2,3 +2,23 @@ Aigapages
 ================
 
 Aigapages es un front-end a la base de datos de aigaion
+
+Dependencias
+**************
+* Django (of course)
+* LESS (Leaner CSS): Compresor de CSS
+	Depende de:
+		* ruby
+		* rubygems
+	
+	$ sudo ruby gem install less
+	- Añadir lessc al path (/var/lib/ruby/1.8/bin)
+* django-css (http://github.com/dziegler/django-css)
+	Depende de:
+		* BeautifulSoup
+	$ sudo python easy_install BeautifulSoup
+	- Descargar django-css y descomprimirlo
+	$ sudo python setup.py install
+
+* algún cache backend de Django: memcached, file backend, database cache backend... 
+		

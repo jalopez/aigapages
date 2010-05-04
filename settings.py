@@ -76,6 +76,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'aigapages.urls'
 
+CACHE_BACKEND = 'dummy://'
 
 INSTALLED_APPS = (
     #'django.contrib.auth',
@@ -83,6 +84,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'aigapages.bib',
+    'compressor',
 )
 
 # vim:set ts=4 sw=4 et:
