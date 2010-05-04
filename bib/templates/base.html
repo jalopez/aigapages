@@ -5,21 +5,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>{{ title }}</title>
 <style type="text/css"> 
-	li {
-            list-style-type:none;
-	    color:#1E6298;
+	body {
             font-family: "Arial Narrow",Helvetica,Arial,sans-serif;
-            font-size:20pt;
-      	}
-        .title {
+	}
+	.type, .year {
             margin:15px 0;
             display:block;
+            font-size:20pt;
+	    color:#1E6298;
 	}
+	ul ul .year {
+            font-size:16pt;
+	}
+
+	li {
+            list-style-type:none;
+      	}
+
 	li.publication {
-	    font-family:Arial,Helvetica,sans-serif;
-            color:#333333;
-            font-size:10pt;
 	    list-style-type:circle;
+	    font-family:Arial,Helvetica,sans-serif;
+            font-size:10pt;
+            color:#333333;
             padding-bottom: 0px;
         }
 	.paperTitle {
@@ -45,7 +52,7 @@
 	    text-decoration:none;
 	}
 	.abstract {
-	    margin: 1ex;
+	    margin: 1ex 1ex 1.5em;
 	    padding: 1ex 1em;
 	    font-size: 90%;
 	    max-width: 72em;

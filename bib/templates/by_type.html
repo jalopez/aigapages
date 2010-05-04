@@ -1,5 +1,8 @@
 {% load i18n %}
+<ul>
 {% for type in types %}
-<h1>{% trans type.pub_type %}</h1>
+<li><span class="type">{% trans type.pub_type %}</span>
 {% include "by_year.html" %}
+</li>
 {% endfor %}
+</ul>
