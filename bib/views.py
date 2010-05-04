@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db.models import Q
 from django.core.servers.basehttp import FileWrapper
 from django.http import HttpResponse, HttpResponseServerError, Http404, HttpResponseBadRequest
+from django.utils.translation import ugettext as _
 from django.shortcuts import get_list_or_404, get_object_or_404, render_to_response, redirect
 from aigapages.bib.models import Author, Publication
 from aigapages.bib.helpers import *

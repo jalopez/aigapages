@@ -1,0 +1,72 @@
+
+#: templates/by_year.html:17
+msgid "and"
+msgstr "and"
+
+#: templates/by_year.html:32
+msgid "Abstract"
+msgstr "Abstract"
+
+#: templates/by_year.html:36
+msgid "Full Text"
+msgstr "Full Text"
+
+msgid "jan"
+msgstr "January"
+
+msgid "feb"
+msgstr "February"
+
+msgid "mar"
+msgstr "March"
+
+msgid "apr"
+msgstr "April"
+
+msgid "may"
+msgstr "May"
+
+msgid "jun"
+msgstr "June"
+
+msgid "jul"
+msgstr "July"
+
+msgid "aug"
+msgstr "August"
+
+msgid "sep"
+msgstr "September"
+
+msgid "oct"
+msgstr "October"
+
+msgid "nov"
+msgstr "November"
+
+msgid "dec"
+msgstr "December"
+
+#:Publication types
+
+msgid "Inbook"
+msgstr "Book Chapter"
+
+msgid "Incollection"
+msgstr "In Collection"
+
+msgid "Inproceedings"
+msgstr "In Proceedings"
+
+msgid "Mastersthesis"
+msgstr "Master Thesis"
+
+msgid "Misc"
+msgstr "Miscelanea"
+
+msgid "Phdthesis"
+msgstr "Ph.D. Thesis"
+
+msgid "Techreport"
+msgstr "Technical Report"
+

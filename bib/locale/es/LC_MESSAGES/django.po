@@ -1,0 +1,90 @@
+
+#: templates/by_year.html:17
+msgid "and"
+msgstr "y"
+
+#: templates/by_year.html:32
+msgid "Abstract"
+msgstr "Resumen"
+
+#: templates/by_year.html:36
+msgid "Full Text"
+msgstr "Texto completo"
+
+msgid "jan"
+msgstr "Enero"
+
+msgid "feb"
+msgstr "Febrero"
+
+msgid "mar"
+msgstr "Marzo"
+
+msgid "apr"
+msgstr "Abril"
+
+msgid "may"
+msgstr "Mayo"
+
+msgid "jun"
+msgstr "Junio"
+
+msgid "jul"
+msgstr "Julio"
+
+msgid "aug"
+msgstr "Agosto"
+
+msgid "sep"
+msgstr "Septiembre"
+
+msgid "oct"
+msgstr "Octubre"
+
+msgid "nov"
+msgstr "Noviembre"
+
+msgid "dec"
+msgstr "Diciembre"
+
+#: Publication types
+
+msgid "Article"
+msgstr "Artículo"
+
+msgid "Book"
+msgstr "Libro"
+
+msgid "Booklet"
+msgstr "Booklet"
+
+msgid "Inbook"
+msgstr "Capítulo de libro"
+
+msgid "Incollection"
+msgstr "En colección"
+
+msgid "Inproceedings"
+msgstr "Artículo de conferencia"
+
+msgid "Manual"
+msgstr "Manual"
+
+msgid "Mastersthesis"
+msgstr "Tesis de Máster"
+
+msgid "Misc"
+msgstr "Otros"
+
+msgid "Phdthesis"
+msgstr "Tesis Doctoral"
+
+msgid "Proceedings"
+msgstr "Libro de conferencia"
+
+msgid "Techreport"
+msgstr "Informe técnico"
+
+msgid "Unpublished"
+msgstr "No publicado"
+
