@@ -25,7 +25,7 @@ def view_all(request):
     for author_id in author_list:
         query = query | Q(author__pk = author_id)
     
-    publications = Publication.objects.filter(query) 
+    publications = Publication.objects.filter(query).distinct()
     return listing_response(publications, request.GET)
 
 def view_author(request, author_id):
