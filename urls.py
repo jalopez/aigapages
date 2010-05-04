@@ -5,6 +5,7 @@ from django.conf.urls.defaults import *
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    (r'^$', 'aigapages.bib.views.index'),
     (r'^bib/', include('aigapages.bib.urls')),
 
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
