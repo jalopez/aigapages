@@ -29,6 +29,7 @@ def group_by_type(publications):
 def listing_response(publications, params, context={ 'title':  ''}):
     order_by = params.get('order_by', 'year')
     project = params.get('project', '')
+    publications = publications.exclude(userfields__icontains='private={True}')
 
     if project:
         publications = publications.filter(userfields__icontains='project={%s}' % project)
