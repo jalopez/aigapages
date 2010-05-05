@@ -26,7 +26,7 @@ def group_by_type(publications):
 
     return types
 
-def listing_response(publications, params, context={}):
+def listing_response(publications, params, context={ 'title':  ''}):
     order_by = params.get('order_by', 'year')
     project = params.get('project', '')
 

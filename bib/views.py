@@ -17,8 +17,7 @@ def extract_project(userfields):
 def index(request):
     userfields = Publication.objects.filter(userfields__icontains='project').values('userfields')
     projects = map(extract_project, userfields)
-    
-    return render_to_response('index.html', {'authors': author_list, 'projects': projects})
+    return render_to_response('index.html', {'authors': author_list, 'projects': projects, 'title': 'Aigapages' })
 
 def view_all(request):
     query = Q()

@@ -4,7 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{% if title %}
 <title>{% trans title %}</title>
+{% endif %}
 <style type="text/css"> 
 	body {
             font-family: "Arial Narrow",Helvetica,Arial,sans-serif;
