@@ -4,6 +4,7 @@ from django.core.servers.basehttp import FileWrapper
 from django.http import HttpResponse, HttpResponseServerError, Http404, HttpResponseBadRequest
 from django.utils.translation import ugettext as _
 from django.shortcuts import get_list_or_404, get_object_or_404, render_to_response, redirect
+from django.template import RequestContext
 from aigapages.bib.models import Author, Publication
 from aigapages.bib.helpers import *
 from aigapages.authors import author_list
@@ -16,7 +17,7 @@ def index(request):
     for pub in project_pubs:
         projects_set.update(pub.userfield('project'))
     projects = list(projects_set)
-    return render_to_response('index.html', {'authors': author_list, 'projects': projects, 'title': 'Aigapages' })
+    return render_to_response('index.html', {'authors': author_list, 'projects': projects, 'title': 'Aigapages' }, context_instance=RequestContext(request))
 
 def view_all(request):
     query = Q()
@@ -24,12 +25,13 @@ def view_all(request):
         query = query | Q(author__pk = author_id)
     
     publications = Publication.objects.filter(query).distinct()
-    return listing_response(publications, request.GET, { 'title': 'Scientific Production' })
+    return listing_response(request, publications, {
+         'title': 'Scientific Production' })
 
 def view_author(request, author_id):
     if int(author_id) in author_list:
         author = get_object_or_404(Author, author_id=author_id)
-        return listing_response(author.publications, request.GET)
+        return listing_response(request, author.publications)
     else: 
         raise Http404
 

@@ -1,4 +1,5 @@
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 from aigapages.authors import author_list
 import re
 
@@ -26,9 +27,9 @@ def group_by_type(publications):
 
     return types
 
-def listing_response(publications, params, context={ 'title':  ''}):
-    order_by = params.get('order_by', 'year')
-    project = params.get('project', '')
+def listing_response(request, publications, context={ 'title':  ''}):
+    order_by = request.GET.get('order_by', 'year')
+    project = request.GET.get('project', '')
     publications = publications.exclude(userfields__icontains='private={True}')
 
     if project:
@@ -38,13 +39,15 @@ def listing_response(publications, params, context={ 'title':  ''}):
         types = group_by_type(publications)
         context.update({'list_template': 'by_type.html', 'types':  types, 
                 'authors': author_list})
-        return render_to_response('publications.html', context)
+        return render_to_response('publications.html', context, 
+                    context_instance=RequestContext(request))
             
     elif (order_by == 'year'):
         years = group_by_year(publications)
         context.update({ 'list_template': 'by_year.html', 'type': {'years': years }, 
                 'authors': author_list}) 
-        return render_to_response('publications.html', context)
+        return render_to_response('publications.html', context,
+                    context_instance=RequestContext(request))
     else: 
         raise Http404
 
