@@ -9,7 +9,7 @@
 
 from django.db import models
 from aigapages.authors import author_list
-
+import re
 
 
 class Publication(models.Model):
@@ -73,6 +73,10 @@ class Publication(models.Model):
     
     def cleanmonth(self):
         return self.month[1:-1]
+
+    def userfield(self, field_name):
+        return map(lambda m: m.group('value'),
+                re.finditer(r'%s={(?P<value>[^}]+)}' % field_name, self.userfields))
 
 
 class Author(models.Model):

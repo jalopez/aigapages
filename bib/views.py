@@ -8,15 +8,14 @@ from aigapages.bib.models import Author, Publication
 from aigapages.bib.helpers import *
 from aigapages.authors import author_list
 from os import path
-import re
 
-def extract_project(userfields):
-    m = re.search(r'project={(?P<name>[^}]+)}', userfields['userfields'])
-    return m.group('name')
 
 def index(request):
-    userfields = Publication.objects.filter(userfields__icontains='project').values('userfields')
-    projects = map(extract_project, userfields)
+    project_pubs = Publication.objects.filter(userfields__icontains='project')
+    projects_set = set()
+    for pub in project_pubs:
+        projects_set.update(pub.userfield('project'))
+    projects = list(projects_set)
     return render_to_response('index.html', {'authors': author_list, 'projects': projects, 'title': 'Aigapages' })
 
 def view_all(request):
