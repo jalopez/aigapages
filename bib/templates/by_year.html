@@ -23,10 +23,9 @@
         {% endfor %}
       </span>
       <span class="paperTitle">{{ pub.cleantitle }}</span>.
-      <span class="editorial"></span>
-      <span class="publiTitle">{{ pub.cleanjournal  }}</span> 
-      <span class="conference">{{ pub.booktitle }}</span>, 
-      <span class="date">{% if pub.month %}{% trans pub.cleanmonth %}, {% endif %}{{ pub.year }}</span> 
+      {% if pub.cleanjournal %}<span class="publiTitle">{{ pub.cleanjournal  }},</span>{% endif %} 
+      {% if pub.booktitle %}<span class="conference">{{ pub.booktitle }},</span>{% endif %}
+      <span class="date">{% if pub.month %}{% trans pub.cleanmonth %} {% endif %}{{ pub.year }}</span> 
       {% url aigapages.bib.views.view_bibtex pub.pub_id as bibtex_url %}
       <span class="links">[<a href="javascript:open_url('{{ bibtex_url }}')">Bibtex</a>]</span>
       {% if pub.abstract %}
