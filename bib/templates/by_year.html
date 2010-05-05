@@ -34,7 +34,7 @@
       {% endif %}
       {% if pub.fulltext_attachment %}
 	 {% url aigapages.bib.views.download_fulltext pub.pub_id as fulltext_url %}
-         <span class="links">[<a {% ifequal pub.fulltext_attachment.isremote "TRUE" %}class="remote"{% endifequal %}
+         <span class="links">[<a class="{% ifequal pub.fulltext_attachment.isremote "TRUE" %}remote {% endifequal %}fulltext"
 		 target="_parent" title="{{ pub.cleantitle }}" 
 		href="{{ fulltext_url }}">{% trans "Full Text" %}</a>]</span>
       {% endif %}
