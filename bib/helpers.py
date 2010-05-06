@@ -3,10 +3,31 @@ from django.template import RequestContext
 from aigapages.authors import author_list
 import re
 
+def month_order(month):
+    if month:
+        return {
+            '"jan"':  1,
+            '"feb"':  2,
+            '"mar"':  3,
+            '"apr"':  4,
+            '"may"':  5,
+            '"jun"':  6,
+            '"jul"':  7,
+            '"aug"':  8,
+            '"sep"':  9,
+            '"oct"': 10,
+            '"nov"': 11,
+            '"dec"': 12,
+        }[month]
+    else:
+        return 0
+
+
 def group_by_year(publications):
     years = publications.values('year').distinct().order_by('-year')
     for year in years:
-        year['publications'] = publications.filter(year=year['year'])
+        year['publications'] = sorted(publications.filter(year=year['year']), 
+                                        key=lambda pub: -month_order(pub.month))
     return years
 
 def group_by_type(publications):
