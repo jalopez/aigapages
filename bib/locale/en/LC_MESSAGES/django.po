@@ -1,4 +1,10 @@
 
+msgid "In"
+msgstr "In"
+
+msgid "Eds."
+msgstr "Eds."
+
 #: templates/by_year.html:17
 msgid "and"
 msgstr "and"

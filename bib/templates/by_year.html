@@ -22,7 +22,15 @@
 	        {% endif %}
         {% endfor %}
       </span>
-      <span class="paperTitle">{{ pub.cleantitle }}</span>.
+      <span class="paperTitle">{{ pub.cleantitle }}</span>. {% trans "In" %}
+      {% if pub.editor_list %}
+         <span class="authors">
+	 {% for ed in pub.editor_list %}
+	   {{ ed.cleanname|encode }}{% if not forloop.last %},{% endif %}
+         {% endfor %}
+	 </span>
+	 ({% trans "Eds." %})
+      {% endif %}
       {% if pub.cleanjournal %}<span class="publiTitle">{{ pub.cleanjournal }}</span>{% endif %}{% comment %}
 {% endcomment %}{% if pub.booktitle %}<span class="conference">{{ pub.booktitle }}</span>{% endif %}{% comment %}
 {% endcomment %}{% if pub.isbn %}, ISBN {{ pub.isbn }}{% endif %}{% comment %}
