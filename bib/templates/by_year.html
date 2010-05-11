@@ -23,16 +23,18 @@
         {% endfor %}
       </span>
       <span class="paperTitle">{{ pub.cleantitle }}</span>.
-      {% if pub.cleanjournal %}<span class="publiTitle">{{ pub.cleanjournal  }},</span>{% endif %} 
-      {% if pub.booktitle %}<span class="conference">{{ pub.booktitle }},</span>{% endif %}
-      <span class="date">{% if pub.month %}{% trans pub.cleanmonth %} {% endif %}{{ pub.year }}</span> 
+      {% if pub.cleanjournal %}<span class="publiTitle">{{ pub.cleanjournal }}</span>{% endif %}{% comment %}
+{% endcomment %}{% if pub.booktitle %}<span class="conference">{{ pub.booktitle }}</span>{% endif %}{% comment %}
+{% endcomment %}{% if pub.isbn %}, ISBN {{ pub.isbn }}{% endif %}{% comment %}
+{% endcomment %}{% if pub.issn %}, ISSN {{ pub.issn }}{% endif %},
+      <span class="date">{% if pub.month %}{% trans pub.cleanmonth %} {% endif %}{{ pub.year }}</span>.
       {% url aigapages.bib.views.view_bibtex pub.pub_id as bibtex_url %}
       <span class="links">[<a href="javascript:open_url('{{ bibtex_url }}')">Bibtex</a>]</span>
       {% if pub.abstract %}
          <span class="links">[<a href="javascript:toggle_abstract('{{ pub.pub_id }}')">{% trans "Abstract" %}</a>]</span>
       {% endif %}
       {% if pub.fulltext_attachment %}
-	 {% url aigapages.bib.views.download_fulltext pub.pub_id as fulltext_url %}
+	  {% url aigapages.bib.views.download_fulltext pub.pub_id as fulltext_url %}
          <span class="links">[<a class="{% ifequal pub.fulltext_attachment.isremote "TRUE" %}remote {% endifequal %}fulltext"
 		 target="_parent" title="{{ pub.cleantitle }}" 
 		href="{{ fulltext_url }}">{% trans "Full Text" %}</a>]</span>
