@@ -14,15 +14,18 @@
 			   <a href="{{ author.homepage }}" target="_parent">{{ author.cleanname|encode }}</a>{% comment %}
 			{% endcomment %}{% else %}{{ author.cleanname|encode }}{% endif %},
 	        {% else %}
+		{% if not forloop.first %}
 	        {% trans "and" %} 
+		{% endif %}
 		 	{% if author.homepage %}
 			   <a href="{{ author.homepage }}" target="_parent">{{ author.cleanname|encode }}</a>{% comment %}
-			{% endcomment %}{% else %}{{ author.cleanname|encode }}{% endif %}
-			({% trans "in alph. order" %}).
+			{% endcomment %}{% else %}{{ author.cleanname|encode }}{% endif %}{% comment %}
+			{% endcomment %}{% if not forloop.first %}
+			({% trans "in alph. order" %}){% endif %}.
 	        {% endif %}
         {% endfor %}
       </span>
-      <span class="paperTitle">{{ pub.cleantitle }}</span>. {% trans "In" %}
+      <span class="paperTitle">{{ pub.cleantitle }}</span>. {% if pub.cleanjournal or pub.booktitle %} {% trans "In" %}{% endif %}
       {% if pub.editor_list %}
          <span class="authors">
 	 {% for ed in pub.editor_list %}
@@ -34,7 +37,7 @@
       {% if pub.cleanjournal %}<span class="publiTitle">{{ pub.cleanjournal }}</span>{% endif %}{% comment %}
 {% endcomment %}{% if pub.booktitle %}<span class="conference">{{ pub.booktitle }}</span>{% endif %}{% comment %}
 {% endcomment %}{% if pub.isbn %}, ISBN {{ pub.isbn }}{% endif %}{% comment %}
-{% endcomment %}{% if pub.issn %}, ISSN {{ pub.issn }}{% endif %},
+{% endcomment %}{% if pub.issn %}, ISSN {{ pub.issn }}{% endif %}{% if pub.cleanjournal or pub.booktitle %},{% endif %}
       <span class="date">{% if pub.month %}{% trans pub.cleanmonth %} {% endif %}{{ pub.year }}</span>.
       {% url aigapages.bib.views.view_bibtex pub.pub_id as bibtex_url %}
       <span class="links">[<a href="javascript:open_url('{{ bibtex_url }}')">Bibtex</a>]</span>
