@@ -37,7 +37,7 @@
       {% if pub.cleanjournal %}<span class="publiTitle">{{ pub.cleanjournal }}</span>{% endif %}{% comment %}
 {% endcomment %}{% if pub.booktitle %}<span class="conference">{{ pub.booktitle }}</span>{% endif %}{% comment %}
 {% endcomment %}{% if pub.isbn %}, ISBN {{ pub.isbn }}{% endif %}{% comment %}
-{% endcomment %}{% if pub.issn %}, ISSN {{ pub.issn }}{% endif %}{% if pub.cleanjournal or pub.booktitle %},{% endif %}
+{% endcomment %}{% if pub.issn %}, ISSN {{ pub.issn }}{% endif %}{% if not pub.cleanjournal and not pub.booktitle %} {% trans pub.pub_type %}{% endif %},
       <span class="date">{% if pub.month %}{% trans pub.cleanmonth %} {% endif %}{{ pub.year }}</span>.
       {% url aigapages.bib.views.view_bibtex pub.pub_id as bibtex_url %}
       <span class="links">[<a href="javascript:open_url('{{ bibtex_url }}')">Bibtex</a>]</span>
