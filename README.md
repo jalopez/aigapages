@@ -1,10 +1,10 @@
 Aigapages
-================
+=========
 
 Aigapages es un front-end a la base de datos de aigaion
 
 Requisitos
-------------
+----------
 
 * django
 * perl
