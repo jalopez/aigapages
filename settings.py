@@ -84,4 +84,9 @@ INSTALLED_APPS = (
     'aigapages.bib',
 )
 
+try:
+    from settings_local import *
+except ImportError: 
+    pass
+
 # vim:set ts=4 sw=4 et:
